@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.util.HashMap;
 import java.util.Map;
 
-//全局异常处理
+/**
+ * Spring MVC中的全局控制器增强类，这个类中可以包含 @ExceptionHandler、@InitBinder、@ModelAttribute 等注解的方法，
+ * 这些方法会应用到所有被 @RequestMapping 注解的方法上，与AOP没有关系
+ */
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {

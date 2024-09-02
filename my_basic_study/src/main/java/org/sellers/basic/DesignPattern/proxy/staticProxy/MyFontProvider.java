@@ -13,7 +13,6 @@ public class MyFontProvider {
 
             @Override
             public Font afterDo(Font font) {
-
                 System.out.println("代理后逻辑，变更font");
                 //假装变更font的逻辑
                 return font;

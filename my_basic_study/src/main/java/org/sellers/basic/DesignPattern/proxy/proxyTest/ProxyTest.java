@@ -8,7 +8,13 @@ public class ProxyTest {
         DoSomething proxyInstance = (DoSomething) Proxy.newProxyInstance(
                 say.getClass().getClassLoader(),
                 say.getClass().getInterfaces(),
-                (proxy, method, args1) -> method.invoke(say, args1)
+                //proxy：代理对象，method：原来要执行的方法，args1：原来要执行的方法的参数
+                (proxy, method, args1) -> {
+                    System.out.println("代理前的逻辑");
+                    Object result = method.invoke(say, args1);
+                    System.out.println("代理后的逻辑");
+                    return result;
+                }
         );
         proxyInstance.saySomething();
     }

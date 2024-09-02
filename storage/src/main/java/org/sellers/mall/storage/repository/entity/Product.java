@@ -7,7 +7,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
-@TableName("mall_product")
+@TableName("product")
 @Data
 public class Product {
     @TableId(value = "id", type = IdType.AUTO)

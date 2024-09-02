@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: mall-order-route
+          uri: lb://mall-order #使用服务名进行负载均衡，lb://前缀表示使用Spring Cloud的LoadBalancer
+          predicates:
+            - Path=/order/** #请求路径中以order开头的路径会匹配路径为/mall-order/**的请求
+          filters:
+            - StripPrefix=1 #去掉路径中的第一个order，例如/order/v1/order/getOrderList的请求，从gateway到order服务的地址是/v1/order/getOrderList
+
+        - id: mall-storage-route
+          uri: lb://mall-storage
+          predicates:
+            - Path=/storage/**
+          filters:
+            - StripPrefix=1

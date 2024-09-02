@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-@TableName("mall_storage")
+@TableName("storage")
 @Data
 public class Storage {
     @TableId(value = "id", type = IdType.AUTO)
