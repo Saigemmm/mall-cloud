@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<h1>主页</h1>
+<h2>用户模块</h2>
+<a href="/user/modelAndViewSelect">利用modelAndView跳转和查询所有用户</a>
+<br/>
+<a href="/user/modelSelect">利用model传递参数和查询所有用户</a>
+<br/>
+<a href="/user/pagingSelect?pageNum=3&pageSize=1">分页查询</a>
+<br/>
+<br/>
+<h2>案例模块</h2>
+<br/>
+<a href="/example/selectAll">所有案例</a>
+<h3>新增案例，并上传图片</h3>
+<form action="/example/rabbitInsert" method="post" enctype="multipart/form-data">
+    案例名称：<input type="text" name="exampleName"/><br/>
+    案例描述：<input type="text" name="exampleDesc"/><br/>
+    图片：<input type="file" name="images">
+    <input type="submit" value="提交"><br/>
+</form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.86.91:3307/boot-mybatis?useSSL=false
+      username: root
+      password: asd123456
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+      driver-class-name: com.mysql.jdbc.Driver
+  redis:
+    host: 192.168.86.3307
+    port: 6379
+    lettuce:
+      shutdown-timeout: 10000
+#  rabbitmq:
+#    host: 192.168.86.140
+#    port: 5672
+#    username: admin
+#    password: admin
+#    listener:
+#      concurrency: 10 #消费者的初始化值
+#      max-concurrency: 20 #并发消费者的最大值
+#      prefetch: 5 #每个消费者每次监听时可拉取处理的消息数量
+#    virtual-host: / #port:默认虚拟机可以不写，会自动配置默认值；虚拟机默认值为“/”
+#    connection-timeout: 15000
+  
+
+
+mybatis:
+  type-aliases-package: org.sellers.springbootmybatis.domain
+  mapper-locations: classpath:mapper/*.xml
+
+debug: true

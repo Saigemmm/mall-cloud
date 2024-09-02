@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sellers.mapper.TExampleMapper">
+  <resultMap id="BaseResultMap" type="org.sellers.domain.TExample">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="EXAMPLE_ID" jdbcType="DECIMAL" property="exampleId" />
+    <result column="EXAMPLE_NAME" jdbcType="VARCHAR" property="exampleName" />
+    <result column="EXAMPLE_DESC" jdbcType="VARCHAR" property="exampleDesc" />
+    <result column="INSERT_TIME" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="IMAGES" jdbcType="VARCHAR" property="images" />
+  </resultMap>
+</mapper>
