@@ -23,6 +23,7 @@
         <module>storage</module>
         <module>message</module>
         <module>my_basic_study</module>
+        <module>user</module>
     </modules>
 
     <properties>

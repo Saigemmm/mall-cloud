@@ -17,6 +17,6 @@ public class UserController {
 
     @RequestMapping("/getUserByName")
     public UserDto getUserByName(@RequestParam String username) {
-        return userService.getUserByName(username;
+        return userService.getUserByName(username);
     }
 }

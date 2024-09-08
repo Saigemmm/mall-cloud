@@ -18,6 +18,7 @@ public class UserService {
         return UserDto.builder()
                 .id(user.getId())
                 .username(user.getUserName())
+                .password(user.getPassword())
                 .build();
     }
 }

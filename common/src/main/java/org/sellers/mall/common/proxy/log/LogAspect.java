@@ -27,7 +27,7 @@ public class LogAspect {
     //第一个*表示返回的参数可以是任何类型，
     //最后两个*表示任何包下的任何类，
     //(..)表示方法的参数列表可以是任意数量和类型的参数
-    @Around("execution(* org.sellers.mall.*.service.impl.*.*(..))")
+    @Around("execution(* org.sellers.mall.order.service.impl.*.*(..))")
     public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
         // 记录方法执行前的时间
         Instant start = Instant.now();

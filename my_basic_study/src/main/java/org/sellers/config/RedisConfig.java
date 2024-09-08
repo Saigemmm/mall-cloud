@@ -34,9 +34,8 @@ public class RedisConfig {
     }
 
     @Bean("redisTemplate")
-    @SuppressWarnings("all")
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
-        RedisTemplate template = new RedisTemplate<String, Object>();
+        RedisTemplate<String, Object> template = new RedisTemplate<>();
         // 配置连接工厂
         template.setConnectionFactory(factory);
         ObjectMapper objectMapper = new ObjectMapper();
