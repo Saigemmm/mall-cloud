@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "mall-storage",fallback = InternalStorageServiceImpl.class)
 @Component
 public interface InternalStorageService {
-    @PostMapping("/internal/getStorageByProductId")
+    @PostMapping("/storage/getStorageByProductId")
     Integer getStorageByProductId(@RequestParam Integer productId);
 }
