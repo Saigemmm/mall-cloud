@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.86.91:8848
+        username: nacos
+        password: nacos
+        # 命名空间
+        namespace: c58a293b-9244-42d7-afc1-a141cb49857f
+        # 配置文件prefix
+        prefix: mall-user
+        # 配置文件的格式
+        file-extension: yaml
+        group: DEFAULT_GROUP
