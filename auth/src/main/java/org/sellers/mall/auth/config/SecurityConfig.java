@@ -1,27 +1,17 @@
 package org.sellers.mall.auth.config;
 
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.jwt.JwtDecoder;
-import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
-
-import javax.crypto.SecretKey;
-
-import static org.springframework.security.config.Customizer.withDefaults;
 
 /**
  * 处理基本的安全设置，包括用户身份验证和 JWT 的配置。
@@ -66,17 +56,5 @@ public class SecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
-    }
-
-    @Bean
-    public JwtDecoder jwtDecoder() {
-        SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256); //必须要使用256位的密钥，这个key是动态的，需要找地方存起来
-        return NimbusJwtDecoder.withSecretKey(key).build();
-    }
-
-    public static void main(String[] args) {
-        // 生成256位的密钥
-        SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-        System.out.println("Generated Key: " + key);
     }
 }
