@@ -17,7 +17,7 @@ public class UserService {
         User user = userRepository.findByUsername(username);
         return UserDto.builder()
                 .id(user.getId())
-                .username(user.getUserName())
+                .username(user.getUsername())
                 .password(user.getPassword())
                 .build();
     }
