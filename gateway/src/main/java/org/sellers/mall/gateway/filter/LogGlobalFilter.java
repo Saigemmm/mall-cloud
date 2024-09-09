@@ -1,4 +1,4 @@
-package org.sellers.mall.gateway.config;
+package org.sellers.mall.gateway.filter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
