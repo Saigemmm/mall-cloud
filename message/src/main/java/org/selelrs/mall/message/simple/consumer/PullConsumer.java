@@ -1,4 +1,4 @@
-package org.selelrs.mall.message.simple;
+package org.selelrs.mall.message.simple.consumer;
 
 
 import org.apache.rocketmq.client.consumer.DefaultLitePullConsumer;

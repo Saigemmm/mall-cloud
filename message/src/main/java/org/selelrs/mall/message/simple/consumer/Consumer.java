@@ -1,4 +1,4 @@
-package org.selelrs.mall.message.simple;
+package org.selelrs.mall.message.simple.consumer;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
@@ -18,7 +18,7 @@ public class Consumer {
         //推模式：消费者等待broker将消息推送过来
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("simpleConsumer");
         consumer.setNamesrvAddr("192.168.86.91:9876");
-        consumer.subscribe("batch",
+        consumer.subscribe("transaction",
                 "*");//*表示不进行消息过滤，任何消息都接收
         //消费方式设置，此处设置为并发消费
         consumer.setMessageListener(new MessageListenerConcurrently() {

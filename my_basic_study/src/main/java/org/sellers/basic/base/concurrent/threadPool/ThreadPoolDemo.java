@@ -20,7 +20,7 @@ public class ThreadPoolDemo {
         //如此定义报错，根据输出日志来判断
         ThreadPoolExecutor threadPoolExecutor=new ThreadPoolExecutor(10,
                 20,
-                0L, TimeUnit.MILLISECONDS,
+                20000L, TimeUnit.MILLISECONDS, //当线程数大于核心时，这是多余空闲线程在终止前等待新任务的最长时间。
                 new ArrayBlockingQueue<>(10));
         for (int i = 1; i <= 100; i++) {
             threadPoolExecutor.execute(new MyTask(i));
@@ -29,7 +29,7 @@ public class ThreadPoolDemo {
 }
 
 class MyTask implements Runnable {
-    private int i;
+    private final int i;
 
     public MyTask(int i) {
         this.i = i;
