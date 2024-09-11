@@ -20,9 +20,9 @@ public class DispatcherServlet {
     }
 
     //模拟spring MVC从request获取handler的对象
-    public void doDispatch(){
+    public void doDispatch(Controller controller){
         //适配器可以获取到希望的handler
-        HttpController controller=new HttpController();
+//        HttpController controller=new HttpController();
 //        AnnotationController controller=new AnnotationController();
 //        SimpleController controller=new SimpleController();
         //得到对应适配器
@@ -40,6 +40,7 @@ public class DispatcherServlet {
     }
 
     public static void main(String[] args) {
-        new DispatcherServlet().doDispatch();
+        Controller controller=new HttpController();
+        new DispatcherServlet().doDispatch(controller);
     }
 }

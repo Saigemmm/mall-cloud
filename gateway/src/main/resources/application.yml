@@ -8,7 +8,6 @@ spring:
             - Path=/order/** #请求路径中以order开头的路径会匹配路径为/mall-order/**的请求
           filters:
             - StripPrefix=1 #去掉路径中的第一个order，例如/order/v1/order/getOrderList的请求，从gateway到order服务的地址是/v1/order/getOrderList
-            - TokenRelay= # 将 OAuth2 令牌转发到下游服务
 
         - id: mall-storage-route
           uri: lb://mall-storage
@@ -16,18 +15,6 @@ spring:
             - Path=/storage/**
           filters:
             - StripPrefix=1
-            - TokenRelay= # 将 OAuth2 令牌转发到下游服务
 
-        - id: mall-auth-route
-          uri: lb://mall-auth
-          predicates:
-            - Path=/oauth2/token
-          filters:
-            - GlobalAuthenticationFilter
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: lb://mall-auth/oauth2/jwks #网关将会从这个地址获取公钥来验证请求携带的token是否有效
   main:
     allow-bean-definition-overriding: true #如果有多个相同名称的 Bean 定义，后定义的 Bean 会覆盖前面定义的 Bean，而不会抛出异常。

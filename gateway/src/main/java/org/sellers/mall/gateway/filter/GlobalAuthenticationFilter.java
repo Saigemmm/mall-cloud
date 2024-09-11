@@ -18,7 +18,7 @@ import reactor.core.publisher.Mono;
 /**
  * token校验和提取用户信息存放到请求头
  */
-@Component
+//@Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class GlobalAuthenticationFilter implements GlobalFilter {
     @Autowired

@@ -9,8 +9,7 @@ import org.springframework.security.web.SecurityFilterChain;
 /**
  * 配置只有token验证过的请求才会通过
  */
-@Configuration
-@EnableWebFluxSecurity //Spring Cloud Gateway是基于Flux实现的
+//@EnableWebFluxSecurity //Spring Cloud Gateway是基于Flux实现的
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
