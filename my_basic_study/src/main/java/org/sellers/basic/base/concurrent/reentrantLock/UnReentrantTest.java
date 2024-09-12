@@ -14,7 +14,6 @@ public class UnReentrantTest {
         for (; ; ) {
             //这句话才是加锁逻辑
              if (owner.compareAndSet(null, current)) {
-                System.out.println("业务逻辑====" + current.getName());
                 return;
             }
         }
@@ -27,11 +26,15 @@ public class UnReentrantTest {
 
     public static void main(String[] args) {
         UnReentrantTest unReentrantTest = new UnReentrantTest();
-        unReentrantTest.lock();//重复获取锁会死循环
-        unReentrantTest.unlock();
         for (int i = 0; i < 1000; i++) {
             new Thread(() -> {
                 unReentrantTest.lock();
+                System.out.println("业务逻辑====" + Thread.currentThread().getName());
+                try {
+                    Thread.sleep(3000L);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 unReentrantTest.unlock();//如果不加这行解锁代码，那么之后的999个线程都会处于无限死循环中、也即是等待锁
             }).start();
         }
