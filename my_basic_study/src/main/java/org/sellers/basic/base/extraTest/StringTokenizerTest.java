@@ -4,10 +4,10 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class StringTokenizerTest {
-
     public static void main(String[] args) {
-        String a="abc";
-        String b="abc";
+        String c="d";
+        String a="abc"+c;
+        String b="abcd";
         System.out.println(a==b);
         Scanner scanner=new Scanner(System.in);
         String s=scanner.nextLine();

@@ -26,7 +26,7 @@ public class MyServerSocketChannel {
             serverSocket.configureBlocking(false);
             System.out.println("服务启动成功。");
             while (true) {
-                //nio的非阻塞是由操作系统内部实现的 ，底层调用了linux内核的accept函数
+                //nio的非阻塞是由操作系统内部实现的 ，底层调用了linux内核的accept函数，accept不会阻塞
                 SocketChannel socketChannel = serverSocket.accept();
                 //nio若没有连接不会阻塞，会直接返回null
                 if (socketChannel != null) {
@@ -35,7 +35,7 @@ public class MyServerSocketChannel {
                     socketChannel.configureBlocking(false);
                     myServerSocketChannel.channelList.add(socketChannel);
                 }else {
-                    Thread.sleep(1000L);
+                    Thread.sleep(3000L);
                     System.out.println("no connection");
                 }
                 Iterator<SocketChannel> iterator = myServerSocketChannel.channelList.iterator();

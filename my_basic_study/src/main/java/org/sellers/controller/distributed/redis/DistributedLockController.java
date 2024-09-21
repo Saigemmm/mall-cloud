@@ -1,7 +1,5 @@
 package org.sellers.controller.distributed.redis;
 
-import org.redisson.Redisson;
-import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,12 +12,10 @@ import java.util.concurrent.TimeUnit;
 @RestController
 @RequestMapping("DistributedLock")
 public class DistributedLockController {
-
     private static final String LOCK_KEY = "product_101";
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
-
 
     /**
      * redis分布式锁的简单演示；核心：setnx key value 命令
@@ -31,7 +27,7 @@ public class DistributedLockController {
         Boolean result = redisTemplate.opsForValue().setIfAbsent(LOCK_KEY, clientId, 10, TimeUnit.SECONDS);
 //        redisTemplate.expire(LOCK_KEY,10, TimeUnit.SECONDS);//比delete更好的去除锁的方法，但是这行代码与上一行代码必须保持原子性
         try {
-            if (!result) {
+            if (Boolean.FALSE.equals(result)) {
                 return "error_code";
             }
             int stock = (int) redisTemplate.opsForValue().get("stock");

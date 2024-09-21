@@ -17,6 +17,7 @@ public class MyServerSocket {
             ServerSocket serverSocket = new ServerSocket(9080);
             while (true) {
                 System.out.println("等待连接。。。。。");
+                //在没有连接来的时候accept会阻塞
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("已有客户端连接");
                 new Thread(() -> {
@@ -35,6 +36,7 @@ public class MyServerSocket {
     private static void handler(Socket clientSocket) throws IOException {
         byte[] bytes = new byte[1024];
         System.out.println("准备read。。。");
+        //read也会阻塞
         int read = clientSocket.getInputStream().read(bytes);
         System.out.println("read完毕");
         if (read != -1) {
