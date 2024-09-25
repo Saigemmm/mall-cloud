@@ -8,6 +8,7 @@ import org.sellers.domain.TUser;
 import org.sellers.mapper.TUserMapper;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,9 +69,10 @@ class SpringBootMybatisApplicationTests {
 
     @Test
     public void createExchange(){
-        //amqpAdmin.declareExchange(new DirectExchange("amqpAdmin.exchange")); //创建exchange
+        //创建exchange
+        amqpAdmin.declareExchange(new DirectExchange("amqpAdmin.exchange")); //创建exchange
         //创建绑定规则
-        amqpAdmin.declareBinding(new Binding("1111news",Binding.DestinationType.QUEUE,"amqpAdmin.exchange","amqp.hah",null));
+        amqpAdmin.declareBinding(new Binding("2222news",Binding.DestinationType.QUEUE,"amqpAdmin.exchange","amqp.hah",null));
     }
 
 }

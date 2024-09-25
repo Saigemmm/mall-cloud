@@ -1,5 +1,9 @@
 package org.sellers.config;
 
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
@@ -16,5 +20,22 @@ public class RabbitmqConfig {
     @Bean
     public MessageConverter messageConverter(){
         return new Jackson2JsonMessageConverter();
+    }
+
+    //一下三个分别是创建rabbitMQ的队列、交换机，以及绑定
+    @Bean
+    public Queue myQueue() {
+        return new Queue("myQueue", true);
+    }
+
+    @Bean
+    public DirectExchange myExchange() {
+        return new DirectExchange("myExchange");
+    }
+
+    //这个绑定指定的就是routingKey，当生产者发送消息时，指定这个key的话，交换机便会讲消息发到队列myQueue中
+    @Bean
+    public Binding binding(Queue queue, DirectExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange).with("testKey");
     }
 }

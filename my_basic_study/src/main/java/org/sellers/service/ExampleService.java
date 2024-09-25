@@ -22,11 +22,11 @@ public class ExampleService {
     private RabbitTemplate rabbitTemplate;
 
     public void insertExampleInRabbit(TExample example) {
-        rabbitTemplate.convertAndSend("mq.direct", "2222", example);
+        rabbitTemplate.convertAndSend("myExchange", "testKey", example);
         System.out.println("已经将example存入消息队列");
     }
 
-    @RabbitListener(queues = "2222news")//只要"2222news"队列中有消息，则该方法就会被调用
+    @RabbitListener(queues = "myQueue")//只要"myQueue"队列中有消息，则该方法就会被调用
     @Transactional
     public void receiveExample(TExample example) {
         exampleMapper.insert(example);
