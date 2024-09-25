@@ -35,17 +35,26 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
-        <!--feign-->
+        <!--feign Feign本身并不直接集成Hystrix，但Spring Cloud OpenFeign可以与Hystrix集成，以实现服务调用的断路器模式。-->
+        <!--从Spring Cloud 2020.0（对应Spring Boot 2.4）开始，
+            Spring Cloud官方推荐使用Spring Cloud LoadBalancer和Resilience4j来替代Ribbon和Hystrix。-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-        <!--loadbalancer, the substitute of ribbon-->
+        <!--loadbalancer, the substitute of ribbon
+            从Spring Cloud 2020.0（对应Spring Boot 2.4）开始，spring cloud用loadbalancer替代ribbon做负载均衡-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-loadbalancer</artifactId>
         </dependency>
         <!--以上依赖是为了防止gateway与spring mvc的冲突而移到common模块下-->
+
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-spring-boot-starter</artifactId>
+            <version>2.2.2</version>
+        </dependency>
 
         <!--mysql驱动-->
         <dependency>

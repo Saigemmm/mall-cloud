@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class SortAlgorithm {
     //每一轮都是相邻的前后两个数字之间的对比，即a[i]与a[i+1]之间的对比，这样每一轮都会出现一个最大的数在数组末尾
-    //另类冒泡，就是将最大的数往后移动而已，和下面那种冒泡相反
+    //另类冒泡，就是将最大的数往后移动而已，和下面那种冒泡相反  这种不提倡，别看了
     public void secBubbleSort(int[] array) {
         //控制总共需要比较多少轮
         for (int i = 0; i < array.length - 1; i++) {
@@ -176,7 +176,7 @@ public class SortAlgorithm {
             index++;
         }
         //将已排好序临时数组赋给原数组
-        //此处k+start的理由是，要排序的数组不一定是从下标0开始的
+        //arraycopy四个参数分别的解释：源数组，源数组下标起点，目标数组，目标数组起点，复制的数组长度
         System.arraycopy(tempArray, 0, array, start, tempArray.length);
     }
 
@@ -184,6 +184,8 @@ public class SortAlgorithm {
      * 取模 a%b=a-(a/b)*b  其中(a/b)的结果只取整数部分
      * 基数排序；也叫桶排序
      * 分别取初个位、十位、百位、千位……后装入不同的桶中（取初时按先进先出的原则，即队列的原则）
+     *
+     * 参考视频：https://www.bilibili.com/video/BV1Zt411o7Rn?p=26&vd_source=bbaa27cb7f0acba3b7a294b9aac433f2
      */
     public void radixSort(int[] array) {
         //先找出数组中的最大的数，看它有几位，决定了桶排序有几轮
@@ -224,6 +226,13 @@ public class SortAlgorithm {
     /**
      * 桶排序，队列实现
      * 不用计数
+     *
+     * 一个三位数的整数，分别取他的个位，十位，百位的方法：
+     * 例如：136
+     * 个位：对10取模：136%10=6
+     * 十位：先除以10在对10取模：136/10%10=3
+     * 百位：先除以100在对10取模：136/100%10=1
+     * 从后往前数第n位: 136/10^(n-1)%10
      */
     public void radixSortOfQueue(int[] array) {
         //先找出数组中的最大的数，看它有几位，决定了桶排序有几轮
