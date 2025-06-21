@@ -24,6 +24,7 @@
         <module>message</module>
         <module>my_basic_study</module>
         <module>user</module>
+        <module>kafka</module>
     </modules>
 
     <properties>
