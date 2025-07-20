@@ -1,2 +1,2 @@
 # mall-cloud
-only in study
+only for study
